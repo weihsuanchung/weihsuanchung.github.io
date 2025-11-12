@@ -193,10 +193,12 @@ h1 {
 }
 
 .email {
+  display: block;            /* 讓 a 變成區塊 */
+  width: fit-content;        /* 寬度依內容 */
+  margin: 0.25rem auto 0;    /* auto 讓它水平置中 */
   color: #2b5d9f;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 500;
-  align-content: center;
 }
 
 /* ---------- 全站預設，避免小螢幕全部置中 ---------- */
@@ -204,9 +206,9 @@ body, .info, .main-content, section, p, li, h1, h2 {
   text-align: left;
 }
 
-.email {
+/* .email {
   text-align: center;
-}
+} */
 
 /* ---------- 導覽列：電腦版就居中 + 換行 ---------- */
 header nav,
