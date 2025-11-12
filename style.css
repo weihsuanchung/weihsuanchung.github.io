@@ -195,12 +195,16 @@ h1 {
 .email {
   color: #2b5d9f;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ---------- 全站預設，避免小螢幕全部置中 ---------- */
 body, .info, .main-content, section, p, li, h1, h2 {
   text-align: left;
+}
+
+.email {
+  text-align: center;
 }
 
 /* ---------- 導覽列：電腦版就居中 + 換行 ---------- */
