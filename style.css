@@ -272,3 +272,43 @@ nav.sticky-nav {
   .info { text-align: left; }
   .avatar { text-align: center; }
 }
+
+/* Card-like section spacing (reuses your .role) */
+.role {
+  margin-bottom: 2rem;
+}
+
+/* Simple, responsive photo grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+  gap: 12px;
+  margin-top: 0.6rem;
+}
+
+.gallery figure {
+  margin: 0;
+  background: #fff;
+  border: 1px solid #e6e8eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery figcaption {
+  font-size: 0.9rem;
+  color: #555;
+  padding: 6px 8px 8px;
+  text-align: center;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .gallery img { height: 150px; }
+}
