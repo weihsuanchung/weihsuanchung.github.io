@@ -59,84 +59,88 @@
     <main class="container">
       <h1>Course Projects</h1>
 
-      <section class="course-grid">
+    <div class="timeline">
 
-        <!-- Quantum Algorithm for Solving PDEs -->
-        <article class="course-card">
-          <h2>Quantum Algorithm for Solving PDEs and Its Applications</h2>
-          <div class="course-meta">Quantum Information and Computation · 2025 Spring · Lecturer: Prof. Hao-Chung Cheng (NTU EE)</div>
-          <ul>
-            <li>Surveyed three approaches to quantum PDEs:
-              (i) wave-equation Hamiltonian simulation (log qubits),
-              (ii) advection via block-encoded nonunitary steps with postselection reuse,
-              (iii) high-order finite-difference mappings to banded Hamiltonians.
-            </li>
-            <li>Analyzed space/time advantages vs. classical solvers; discussed boundary handling, state prep, Trotter error.</li>
-          </ul>
-          <p>We highlighted qubitization and improved observable extraction as promising next steps toward practical quantum PDE solvers.</p>
-          <div class="card-actions">
-            <a class="btn-link" href="https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
-          </div>
-        </article>
-
-        <!-- Regression & Bayesian Inference -->
-        <article class="course-card">
-          <h2>Regression and Bayesian Inference: Mean Squared Error</h2>
-          <div class="course-meta">Physical Theories on (Machine) Learning · 2025 Fall · Lecturer: Prof. Miranda C. N. Cheng (NTU Physics)</div>
-          <ul>
-            <li>Linked MSE minimization to maximum likelihood under Gaussian noise.</li>
-            <li>Showed MAP with Gaussian prior recovers ridge regression with penalty strength \(\lambda=\sigma^2/\tau^2\).</li>
-          </ul>
-          <p>Bridges statistical physics intuition with Bayesian regression, clarifying priors, likelihood, and regularization.</p>
-          <div class="card-actions">
-            <a class="btn-link" href="https://drive.google.com/drive/folders/14GRNlpayGsCsZLmGu1XvyVk4By_sDdTu?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
-          </div>
-        </article>
-
-        <!-- Exact Decoding of QEC Codes -->
-        <article class="course-card">
-          <h2>Exact Decoding of Quantum Error-Correcting Codes</h2>
-          <div class="course-meta">IAMS Group Meeting / Coding Theory · 2025 Fall · Presented at Jen Group (IAMS, Academia Sinica)</div>
-          <ul>
-            <li>Explored exact decoding algorithms for QEC; performance and scalability trade-offs.</li>
-            <li>Motivated by Prof. Chun-Ming Chen’s Coding Theory course; based on PRL 134, 190603.</li>
-          </ul>
-          <p>Connected coding-theoretic decoding with physical error models, emphasizing regimes where exact methods are viable.</p>
-          <div class="card-actions">
-            <a class="btn-link" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603" target="_blank" rel="noopener">PRL 134, 190603</a>
-            <a class="btn-link" href="https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing" target="_blank" rel="noopener">Slides & Notes</a>
-          </div>
-        </article>
-
-        <!-- Features of Optical Computing -->
-        <article class="course-card">
-          <h2>The Features of Optical Computing</h2>
-          <div class="course-meta">Introduction to Semiconductor Optoelectronics · 2024 Spring · Lecturer: Prof. Yun-Chorng Chang (RCAS, Academia Sinica)</div>
-          <ul>
-            <li>Introduced photonic computing with visible/IR photons for digital computation.</li>
-            <li>Discussed advantages: spatial parallelism, low-loss links, low cross-talk, one-way propagation, very high carrier bandwidth (~500 THz).</li>
-          </ul>
-          <p>Outlined key hurdles: co-designing optical processor architectures, advancing photonic materials, reducing system bulk.</p>
-          <div class="card-actions">
-            <a class="btn-link" href="https://drive.google.com/drive/folders/1WC8oHstm86_m0vdKC4bWl-zRT6JmJFeB?usp=sharing" target="_blank" rel="noopener">Video (Mandarin)</a>
-          </div>
-        </article>
-
-        <!-- Qiskit Pulse (in progress) -->
-        <article class="course-card">
-          <h2>Comparing Gate-Based vs. Unitary-Based Pulse Generation with Qiskit Pulse (in progress)</h2>
-          <div class="course-meta">Introduction to Quantum Computation and Information · 2025 Fall · Lecturer: Prof. Hsi-Sheng Guan (NTU Physics)</div>
-          <ul>
-            <li>Gate-based pulses: predefined/optimized for standard gates; Unitary-based: custom operations and flexibility.</li>
-            <li>Comparing fidelity, flexibility, and implementation complexity on IBM Quantum hardware.</li>
-          </ul>
-          <p>Highlights the trade-off between ease-of-use and control customization in practical quantum pulse synthesis.</p>
-          <div class="card-actions">
-            <a class="btn-link" href="https://arxiv.org/abs/2405.03804" target="_blank" rel="noopener">EPOC (arXiv:2405.03804)</a>
-          </div>
-        </article>
-
+      <!-- QIC: Quantum PDEs -->
+      <section class="entry">
+        <h2>Quantum Algorithm for Solving PDEs and Its Applications</h2>
+        <div class="meta">Quantum Information & Computation · 2025 Spring · Lecturer: Prof. Hao-Chung Cheng (NTU EE)</div>
+        <p class="summary">
+          Surveyed three families of quantum PDE approaches and compared space/time complexity with classical solvers;
+          identified boundary handling, state preparation, and Trotter error as key bottlenecks; pointed to qubitization
+          and better observable extraction as next steps.
+        </p>
+        <ul>
+          <li>Wave-equation Hamiltonian simulation (log qubit scaling).</li>
+          <li>Advection via block-encoded nonunitary steps with postselection reuse.</li>
+          <li>High-order finite-difference mappings to banded Hamiltonians.</li>
+        </ul>
+        <div class="links">
+          <a class="btn-link" href="https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
+        </div>
       </section>
+
+      <!-- PTML: Regression & Bayesian -->
+      <section class="entry">
+        <h2>Regression and Bayesian Inference: Mean Squared Error</h2>
+        <div class="meta">Physical Theories on (Machine) Learning · 2025 Fall · Lecturer: Prof. Miranda C. N. Cheng (NTU Physics)</div>
+        <p class="summary">
+          Showed how Gaussian-noise linear regression links MSE minimization to maximum likelihood; with a Gaussian prior,
+          MAP recovers ridge regression with penalty strength \(\lambda=\sigma^2/\tau^2\).
+        </p>
+        <div class="links">
+          <a class="btn-link" href="https://drive.google.com/drive/folders/14GRNlpayGsCsZLmGu1XvyVk4By_sDdTu?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
+        </div>
+      </section>
+
+      <!-- QEC Decoding -->
+      <section class="entry">
+        <h2>Exact Decoding of Quantum Error-Correcting Codes</h2>
+        <div class="meta">IAMS Group Meeting / Coding Theory · 2025 Fall · Presented at Jen Group (Academia Sinica)</div>
+        <p class="summary">
+          Explored exact decoding algorithms for QEC with an eye to performance/scalability and regimes where exact methods are viable.
+        </p>
+        <ul>
+          <li>Motivated by Prof. Chun-Ming Chen’s Coding Theory (NTU).</li>
+          <li>Reference: PRL 134, 190603.</li>
+        </ul>
+        <div class="links">
+          <a class="btn-link" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603" target="_blank" rel="noopener">PRL 134, 190603</a>
+          <a class="btn-link" href="https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing" target="_blank" rel="noopener">Slides & Notes</a>
+        </div>
+      </section>
+
+      <!-- Optical computing -->
+      <section class="entry">
+        <h2>The Features of Optical Computing</h2>
+        <div class="meta">Introduction to Semiconductor Optoelectronics · 2024 Spring · Lecturer: Prof. Yun-Chorng Chang (RCAS, Academia Sinica)</div>
+        <p class="summary">
+          Introduced photonic computing and why it’s attractive (parallelism, low-loss links, low cross-talk, one-way propagation,
+          very high carrier bandwidth ~500 THz); outlined hurdles in architecture co-design, materials, and reducing system bulk.
+        </p>
+        <div class="links">
+          <a class="btn-link" href="https://drive.google.com/drive/folders/1WC8oHstm86_m0vdKC4bWl-zRT6JmJFeB?usp=sharing" target="_blank" rel="noopener">Video (Mandarin)</a>
+        </div>
+      </section>
+
+      <!-- Qiskit Pulse (in progress) -->
+      <section class="entry">
+        <h2>Comparing Gate-Based vs. Unitary-Based Pulse Generation with Qiskit Pulse <em>(in progress)</em></h2>
+        <div class="meta">Introduction to Quantum Computation & Information · 2025 Fall · Lecturer: Prof. Hsi-Sheng Guan (NTU Physics)</div>
+        <p class="summary">
+          Contrasts predefined gate pulses vs. custom unitary-based pulses on IBM Quantum hardware—fidelity, flexibility, and implementation complexity.
+        </p>
+        <div class="links">
+          <a class="btn-link" href="https://arxiv.org/abs/2405.03804" target="_blank" rel="noopener">EPOC (arXiv:2405.03804)</a>
+        </div>
+        <details>
+          <summary>More notes</summary>
+          <p class="summary">
+            Gate-based pulses are convenient and hardware-optimized; unitary-based pulses enable tailored control at the cost of synthesis effort.
+          </p>
+        </details>
+      </section>
+    </div>
   </main>
   </body>
 </html>

@@ -1,157 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Course Projects | Wei-Hsuan Chung</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
-    /* Page-specific styles (move to style.css later if you like) */
-    .page-wrap { max-width: 960px; margin: 2rem auto; padding: 0 1.2rem; }
-    .page-wrap h1 {
-      font-size: 2rem; margin: 0 0 1.2rem; padding-bottom: .5rem; border-bottom: 2px solid #ccc;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wei-Hsuan Chung</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --bg: #f4f7fa;
+        --text: #1f2d3d;
+        --primary: #4a6fa5;
+        --muted: #6c7a89;
+      }
+      header {
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 1.2rem 2rem;
+        text-align: center;
+      }
+      nav a {
+        margin: 0 1rem;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2rem;
+        gap: 2rem;
+      }
+      .avatar {
+        flex: 0 0 240px;
+        text-align: center;
+      }
+      .avatar img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 100px;
+        border: 4px solid #e0e7ef;
+      }
+      .info {
+        flex: 1 1 300px;
+        max-width: 600px;
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.4rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        color: var(--primary);
+      }
+      p {
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .info {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="research.html"><strong>Research</strong></a>
+        <a href="courses.html"><strong>Course Projects</strong></a>
+        <a href="experience.html" class="active"><strong>Experience</strong></a>
+        <a href="cv.pdf"><strong>CV</strong></a>
+       </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="avatar">
+          <!-- <img src="your-photo.jpg" alt="Portrait of Wei-Hsuan Chung" /> -->
+          <img src="photo.jpg" alt="Portrait of Wei-Hsuan Chung" />
+          <!-- <p><a href="mailto:b12202069@ntu.edu.tw">b12202069@ntu.edu.tw</a></p> -->
+          <p><a class="email">b12202069@ntu.edu.tw</a></p>
+            <div class="social-icons">
+              <a class="icon-btn" href="https://github.com/weihsuanchung" target="_blank" rel="noopener" aria-label="GitHub">
+                <!-- GitHub SVG -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.48-1.33-5.48-5.91 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.51.12-3.15 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.64.24 2.85.12 3.15.77.84 1.24 1.91 1.24 3.22 0 4.59-2.81 5.61-5.49 5.91.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5z"/>
+                </svg>
+              </a>
 
-    .timeline { position: relative; margin-left: .75rem; }
-    .timeline::before {
-      content: ""; position: absolute; top: .2rem; bottom: 0; left: 0; width: 2px; background: #e2e6ec;
-    }
-
-    .entry {
-      position: relative; margin: 1.2rem 0 1.6rem 1.5rem;
-      padding-left: .75rem;
-    }
-    .entry::before {
-      content: ""; position: absolute; left: -1.1rem; top: .35rem;
-      width: 10px; height: 10px; border-radius: 50%; background: #4a6fa5;
-      box-shadow: 0 0 0 4px #f4f7fa; /* halo */
-    }
-
-    .entry h2 {
-      font-size: 1.12rem; margin: 0 0 .25rem; color: #4a6fa5;
-    }
-    .meta {
-      font-size: .95rem; color: #6c7a89; margin-bottom: .35rem;
-    }
-    .summary { margin: .35rem 0 .55rem; color: #444; line-height: 1.6; }
-
-    .entry ul { margin: .2rem 0 .6rem 1.2rem; }
-    .entry li { color: #555; margin: .25rem 0; }
-
-    .links { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .2rem; }
-    .btn-link {
-      display: inline-block; padding: .34rem .6rem; border: 1px solid #cfd6de; border-radius: 8px;
-      text-decoration: none; font-size: .92rem; color: #2b5d9f; background: #f7f9fc;
-    }
-    .btn-link:hover { background: #eaf0fb; border-color: #c2ccda; }
-
-    details { margin-top: .25rem; }
-    details > summary {
-      cursor: pointer; list-style: none; color: #2b5d9f; font-weight: 600;
-    }
-    details > summary::-webkit-details-marker { display: none; }
-
-    @media (max-width: 768px) {
-      .entry { margin-left: 1.2rem; }
-      .entry::before { left: -1rem; }
-    }
-  </style>
-</head>
-<body>
-  <nav class="sticky-nav">
-    <a href="index.html"><strong>Home</strong></a>
-    <a href="research.html"><strong>Research</strong></a>
-    <a href="courses.html" class="active"><strong>Course Projects</strong></a>
-    <a href="experience.html"><strong>Experience</strong></a>
-    <a href="cv.pdf" target="_blank"><strong>CV</strong></a>
-  </nav>
-
-  <main class="page-wrap">
-    <h1>Course Projects</h1>
-
-    <div class="timeline">
-
-      <!-- QIC: Quantum PDEs -->
-      <section class="entry">
-        <h2>Quantum Algorithm for Solving PDEs and Its Applications</h2>
-        <div class="meta">Quantum Information & Computation · 2025 Spring · Lecturer: Prof. Hao-Chung Cheng (NTU EE)</div>
-        <p class="summary">
-          Surveyed three families of quantum PDE approaches and compared space/time complexity with classical solvers;
-          identified boundary handling, state preparation, and Trotter error as key bottlenecks; pointed to qubitization
-          and better observable extraction as next steps.
-        </p>
-        <ul>
-          <li>Wave-equation Hamiltonian simulation (log qubit scaling).</li>
-          <li>Advection via block-encoded nonunitary steps with postselection reuse.</li>
-          <li>High-order finite-difference mappings to banded Hamiltonians.</li>
-        </ul>
-        <div class="links">
-          <a class="btn-link" href="https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/wei-hsuan-chung-a98782386" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <!-- LinkedIn SVG -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.11h.07c.67-1.26 2.3-2.59 4.73-2.59 5.06 0 6 3.33 6 7.67V24h-5v-6.84c0-1.63-.03-3.73-2.28-3.73-2.28 0-2.63 1.78-2.63 3.62V24H8V8.5z"/>
+                </svg>
+              </a>
+            </div>
         </div>
-      </section>
-
-      <!-- PTML: Regression & Bayesian -->
-      <section class="entry">
-        <h2>Regression and Bayesian Inference: Mean Squared Error</h2>
-        <div class="meta">Physical Theories on (Machine) Learning · 2025 Fall · Lecturer: Prof. Miranda C. N. Cheng (NTU Physics)</div>
-        <p class="summary">
-          Showed how Gaussian-noise linear regression links MSE minimization to maximum likelihood; with a Gaussian prior,
-          MAP recovers ridge regression with penalty strength \(\lambda=\sigma^2/\tau^2\).
-        </p>
-        <div class="links">
-          <a class="btn-link" href="https://drive.google.com/drive/folders/14GRNlpayGsCsZLmGu1XvyVk4By_sDdTu?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
-        </div>
-      </section>
-
-      <!-- QEC Decoding -->
-      <section class="entry">
-        <h2>Exact Decoding of Quantum Error-Correcting Codes</h2>
-        <div class="meta">IAMS Group Meeting / Coding Theory · 2025 Fall · Presented at Jen Group (Academia Sinica)</div>
-        <p class="summary">
-          Explored exact decoding algorithms for QEC with an eye to performance/scalability and regimes where exact methods are viable.
-        </p>
-        <ul>
-          <li>Motivated by Prof. Chun-Ming Chen’s Coding Theory (NTU).</li>
-          <li>Reference: PRL 134, 190603.</li>
-        </ul>
-        <div class="links">
-          <a class="btn-link" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603" target="_blank" rel="noopener">PRL 134, 190603</a>
-          <a class="btn-link" href="https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing" target="_blank" rel="noopener">Slides & Notes</a>
-        </div>
-      </section>
-
-      <!-- Optical computing -->
-      <section class="entry">
-        <h2>The Features of Optical Computing</h2>
-        <div class="meta">Introduction to Semiconductor Optoelectronics · 2024 Spring · Lecturer: Prof. Yun-Chorng Chang (RCAS, Academia Sinica)</div>
-        <p class="summary">
-          Introduced photonic computing and why it’s attractive (parallelism, low-loss links, low cross-talk, one-way propagation,
-          very high carrier bandwidth ~500 THz); outlined hurdles in architecture co-design, materials, and reducing system bulk.
-        </p>
-        <div class="links">
-          <a class="btn-link" href="https://drive.google.com/drive/folders/1WC8oHstm86_m0vdKC4bWl-zRT6JmJFeB?usp=sharing" target="_blank" rel="noopener">Video (Mandarin)</a>
-        </div>
-      </section>
-
-      <!-- Qiskit Pulse (in progress) -->
-      <section class="entry">
-        <h2>Comparing Gate-Based vs. Unitary-Based Pulse Generation with Qiskit Pulse <em>(in progress)</em></h2>
-        <div class="meta">Introduction to Quantum Computation & Information · 2025 Fall · Lecturer: Prof. Hsi-Sheng Guan (NTU Physics)</div>
-        <p class="summary">
-          Contrasts predefined gate pulses vs. custom unitary-based pulses on IBM Quantum hardware—fidelity, flexibility, and implementation complexity.
-        </p>
-        <div class="links">
-          <a class="btn-link" href="https://arxiv.org/abs/2405.03804" target="_blank" rel="noopener">EPOC (arXiv:2405.03804)</a>
-        </div>
-        <details>
-          <summary>More notes</summary>
-          <p class="summary">
-            Gate-based pulses are convenient and hardware-optimized; unitary-based pulses enable tailored control at the cost of synthesis effort.
+        <div class="info">
+          <h1>Wei-Hsuan Chung 鍾瑋軒</h1>
+          <h2>About Me</h2>
+          <p>
+            I’m a third-year undergraduate at National Taiwan University majoring in Physics (and double-majoring in Sociology). My research focuses on open quantum systems, waveguide QED, and non-equilibrium dynamics. I currently work with Dr. Hsiang-Hua Jen at Academia Sinica on theoretical quantum optics, studying spectral properties and collective effects in structured photonic environments. I’m broadly interested in how quantum information concepts emerge in many-body and dissipative systems.
           </p>
-        </details>
-      </section>
+          <h2>Education</h2>
+          <ul>
+            <li><strong>National Taiwan University</strong> — B.S. in Physics, B.A. in Sociology (Expected 2027)</li>
+            <li><strong>NTU Quantum Computing and Information Program</strong> — Certificate Program (Expected 2026)</li>
+            <li><strong>Taichung Municipal Taichung Girls' Senior High School</strong> — Mathematics and Science Honors Program (Graduated 2023)</li>
+            <li><strong>GPA:</strong> 4.00/4.30</li>
+          </ul>
 
-    </div>
-  </main>
-</body>
+          <!-- <h2>Links</h2>
+          <ul>
+
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/wei-hsuan-chung-a98782386" target="_blank" rel="noopener">Wei-Hsuan Chung</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </main>
+    <section class="intro">
+      <h2>Introduction</h2>
+      <p>
+        Hello! I'm Wei-Hsuan Chung, a third-year undergraduate researcher at National Taiwan University, where I am pursuing a B.S. in Physics with a double major in Sociology.
+      </p>
+      <p>
+        I am passionate about understanding the (often counter-intuitive) dynamics of the quantum world. My academic journey is driven by a curiosity to find the fundamental principles that govern how quantum information flows, interacts with its environment, and gives rise to complex, non-equilibrium phenomena.
+      </p>
+      <p>
+        My research, conducted primarily at Academia Sinica, bridges the gap between rigorous theoretical modeling and high-performance computational simulation.
+      </p>
+      <p>
+        My theoretical work in Dr. H.H. Jen's group focuses on open quantum systems, particularly waveguide QED. This research has led to a co-authored paper submitted to Physical Review A (<a href="https://arxiv.org/abs/2510.27310" target="_blank" rel="noopener">arXiv:2510.27310</a>) , where we analyzed Liouvillian spectra and excitation dynamics. I am currently expanding this focus to include topics like the Quantum Mpemba Effect and Quantum Error Correction.
+      </p>
+      <p>
+        I complement this theory with hands-on computational skills. In Dr. Kiwing To's group, I use LAMMPS to simulate complex granular systems, and my aptitude for data analysis was recognized with a Merit Award in the 2024 Promenade of Data Science.
+      </p>
+      <p>
+        People often ask, "Why Physics and Sociology?" I believe this dual perspective is my greatest strength. My physics training provides the rigorous quantitative tools to model complex systems, while my sociology major  trains me to analyze the underlying structures, interactions, and emergent behaviors that define those systems—whether they are quantum or human. This unique combination allows me to approach problems as a "systems-level thinker."
+      </p>
+      <p>
+        My long-term goal is to pursue a Ph.D. and contribute to the field of quantum information and quantum theory.
+      </p>
+      <p>
+        I am actively seeking a challenging summer 2026 research internship to further this goal. If you are a faculty member or researcher with a potential project, or just want to chat about quantum dynamics, please feel free to <a href="mailto:b12202069@ntu.edu.tw" target="_blank" rel="noopener">get in touch</a> or explore my <a href="research.html">detailed research projects</a>.
+      </p>
+  </section>
+  </body>
 </html>
