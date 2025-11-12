@@ -18,75 +18,106 @@
         text-decoration: none;
         font-weight: 500;
       }
-      nav a:hover {
-        text-decoration: underline;
-      }
-      main {
-        max-width: 800px;
+      nav a:hover { text-decoration: underline; }
+
+      /* container aligns with your other pages */
+      main.container {
+        max-width: 960px;
         margin: 2rem auto;
-        padding: 0 1.5rem;
+        padding: 0 1.2rem;
       }
+
       h1 {
         font-size: 2rem;
         margin-bottom: 1rem;
         border-bottom: 2px solid #ccc;
         padding-bottom: 0.5rem;
       }
-      .role {
-        margin-bottom: 2rem;
-      }
+      .role { margin-bottom: 2rem; }
       .role h2 {
         font-size: 1.3rem;
         color: #4a6fa5;
         margin-bottom: 0.3rem;
       }
-      .role p {
-        margin: 0.2rem 0;
-        color: #6c7a89;
+      .role p, .role li { color: #6c7a89; }
+
+      /* ---- responsive gallery (auto size, centered, 2 cols when space allows) ---- */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin-top: 0.6rem;
+        justify-items: center;   /* center figures in their grid cells */
+      }
+      .gallery figure {
+        margin: 0;
+        width: 100%;
+        max-width: 520px;        /* keep single images from stretching too wide */
+        background: #fff;
+        border: 1px solid #e6e8eb;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+      }
+      .gallery img {
+        display: block;
+        width: 100%;
+        height: 220px;           /* consistent height */
+        object-fit: cover;       /* crop nicely without distortion */
+      }
+      .gallery figcaption {
+        font-size: 0.9rem;
+        color: #555;
+        padding: 6px 8px 10px;
+      }
+
+      /* phones: stack, slightly shorter images */
+      @media (max-width: 768px) {
+        .gallery { grid-template-columns: 1fr; }
+        .gallery img { height: 180px; }
       }
     </style>
   </head>
   <body>
     <header>
-       <nav>
+      <nav>
         <a href="index.html"><strong>Home</strong></a>
         <a href="research.html"><strong>Research</strong></a>
         <a href="courses.html"><strong>Course Projects</strong></a>
         <a href="experience.html" class="active"><strong>Experience</strong></a>
         <a href="cv.pdf"><strong>CV</strong></a>
-       </nav>
+      </nav>
     </header>
+
     <main class="container">
       <div class="main-content">
         <h1>Activities & Honors</h1>
 
-        <!-- Activities / Honors list -->
         <section class="role">
           <h2>2025 NCTS AMO Summer School</h2>
           <ul>
             <li><strong>Organizer:</strong> National Center for Theoretical Sciences · <em>Aug 2025</em></li>
-            <li>Three-day intensive AMO program: lectures, problem sessions, and lab demos; strengthened background in quantum optics and atomic physics.</li>
+            <li>Three-day intensive AMO program: lectures, problem sessions, lab demos; strengthened background in quantum optics and atomic physics.</li>
           </ul>
           <div class="gallery">
-            <!-- Replace with your own photos -->
             <figure>
               <img src="ncts-amo-1.jpg" alt="Group photo at NCTS event" />
               <figcaption>Lecture session</figcaption>
             </figure>
             <figure>
-              <img src="ncts-amo-2.jpg" alt="Lecture Hall at NCTS event" />
+              <img src="ncts-amo-2.jpg" alt="Lecture hall at NCTS" />
               <figcaption>Group photo</figcaption>
             </figure>
           </div>
         </section>
-      
+
         <section class="role">
           <h2>Promenade of Data Science — Merit Award</h2>
-            <ul>
+          <ul>
             <li><strong>Institution:</strong> Institute of Statistical Science, Academia Sinica · <em>Dec 2024</em></li>
-            <li>Recognized for building a clean, reproducible analysis pipeline and clear visualization/reporting of results</li>
-            <li>Awarded among 100+ participants from various universities, including undergraduate and graduate students</li>
-            </ul>
+            <li>Recognized for a clean, reproducible pipeline and clear visualization/reporting of results.</li>
+            <li>Awarded among 100+ participants from multiple universities and levels.</li>
+          </ul>
           <div class="gallery">
             <figure>
               <img src="pds-award.jpg" alt="Receiving Merit Award at Promenade of Data Science" />
@@ -94,27 +125,35 @@
             </figure>
             <figure>
               <img src="pds-poster.jpg" alt="Poster presentation at Promenade of Data Science" />
-              <figcaption>Poster Presentation and My Team</figcaption>
+              <figcaption>Poster presentation & team</figcaption>
             </figure>
           </div>
         </section>
 
         <section class="role">
           <h2>Entegris Foundation — STEM Scholarship (2024)</h2>
-            <ul>
-            <li>Awarded scholarship for academic excellence and commitment to STEM fields</li>
-            <li>Selected among numerous sophomore applicants based on academic achievements in NTU</li>
-            </ul>
+          <ul>
+            <li>Awarded for academic excellence and commitment to STEM fields.</li>
+            <li>Selected among numerous sophomore applicants based on achievements at NTU.</li>
+          </ul>
         </section>
 
         <section class="role">
           <h2>NASA Space Apps Challenge 2025</h2>
           <ul>
-            <li>Team project integrating React.js front-end and Python/Flask back-end for weather-risk visualization using public datasets.</li>
-            <li>Project Link: <a href="https://www.spaceappschallenge.org/2025/find-a-team/tsaijiunteam/?tab=project" target="_blank" rel="noopener noreferrer">WeAdvisor: Discover Global Historical Weather Data</a></li>
+            <li>Team project integrating React front-end and Python/Flask back-end for weather-risk visualization with public datasets.</li>
+            <li>Project link: <a href="https://www.spaceappschallenge.org/2025/find-a-team/tsaijiunteam/?tab=project" target="_blank" rel="noopener">WeAdvisor: Discover Global Historical Weather Data</a></li>
           </ul>
+          <!-- single-image example (will center and cap width automatically)
+          <div class="gallery">
+            <figure>
+              <img src="spaceapps-1.jpg" alt="Team presenting project at NASA Space Apps" />
+              <figcaption>Team presentation</figcaption>
+            </figure>
+          </div>
+          -->
         </section>
+      </div>
     </main>
   </body>
 </html>
-

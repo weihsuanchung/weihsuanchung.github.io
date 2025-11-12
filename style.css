@@ -201,6 +201,8 @@ h1 {
   text-decoration: none;
 }
 
+.avatar p { text-align: center; } 
+
 /* ---------- 全站預設，避免小螢幕全部置中 ---------- */
 body, .info, .main-content, section, p, li, h1, h2 {
   text-align: left;
