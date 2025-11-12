@@ -196,6 +196,7 @@ h1 {
   color: #2b5d9f;
   text-decoration: none;
   font-weight: 500;
+  align-content: center;
 }
 
 /* ---------- 全站預設，避免小螢幕全部置中 ---------- */
