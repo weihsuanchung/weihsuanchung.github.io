@@ -102,3 +102,41 @@ h1 {
     margin-bottom: 0.5rem;
   }
 
+  /* Publications section */
+.pubs {
+  margin-top: 2.5rem;
+  padding: 1rem 1.2rem;
+  background: #ffffff;
+  border: 1px solid #e6e8eb;
+  border-radius: 8px;
+}
+.pubs h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #e6e8eb;
+  padding-bottom: 0.4rem;
+}
+.pubs ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.2rem;
+}
+.pubs li {
+  margin: 0.6rem 0;
+}
+
+/* Keywords section */
+.keywords {
+  margin-top: 2rem;
+  padding: 1rem 1.2rem;
+  background: #f7f9fc;
+  border: 1px solid #e6e8eb;
+  border-radius: 8px;
+}
+.keywords h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #e6e8eb;
+  padding-bottom: 0.4rem;
+}
+.keywords p {
+  margin: 0.4rem 0;
+}
+
