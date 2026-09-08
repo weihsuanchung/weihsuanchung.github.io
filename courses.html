@@ -45,24 +45,45 @@
         color: #6c7a89;
     }
   </style>
-  </head>
+  <meta name="description" content="Wei-Hsuan Chung — NTU undergraduate researcher in theoretical quantum optics, open quantum systems, and quantum information.">
+<meta property="og:title" content="Courses | Wei-Hsuan Chung">
+<meta property="og:description" content="Wei-Hsuan Chung — NTU undergraduate researcher in theoretical quantum optics, open quantum systems, and quantum information.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://weihsuanchung.github.io/courses.html">
+<meta property="og:image" content="https://weihsuanchung.github.io/photo.jpg">
+</head>
   <body>
     <header>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="index.html"><strong>Home</strong></a>
         <a href="research.html"><strong>Research</strong></a>
-        <a href="courses.html" class="active"><strong>Course Projects</strong></a>
-        <a href="experience.html"><strong>Experience</strong></a>
+        <a href="courses.html" class="active" aria-current="page"><strong>Course Projects</strong></a>
+        <a href="experience.html"><strong>Experience &amp; Honors</strong></a>
         <a href="cv.pdf"><strong>CV</strong></a>
       </nav>
     </header>
     <main class="container">
       <h1>Course Projects</h1>
 
-    <div class="timeline">
-
-      <!-- QIC: Quantum PDEs -->
-      <section class="entry">
+      <div class="timeline"><section class="project"><h2>Noise-Aware Evaluation of EPOC Compilation</h2><p class="meta">Introduction to Quantum Computation and Information · 2025</p><p>Reproduced the EPOC compilation pipeline by combining ZX-calculus optimization with BQSKit synthesis, then evaluated thermal-relaxation and depolarizing noise using Qiskit Aer. Observed depth reductions exceeding 90% on selected benchmarks and identified degradation in larger circuits when pulse durations approached hardware coherence times.<br>
+        <div class="links"><a class="btn-link" href="https://drive.google.com/file/d/16gXFBYDk-Z_bkJiOrvICdMh581pANyCf/view?usp=sharing" target="_blank" rel="noopener">Project report</a>
+        <a class="btn-link" href="https://arxiv.org/abs/2405.03804" target="_blank" rel="noopener">EPOC reference</a>
+        </div>
+      </section>
+        <section class="entry">
+        <h2>Exact Decoding of Quantum Error-Correcting Codes</h2>
+        <div class="meta">IAMS Group Meeting / Coding Theory · 2025 Fall · Presented at Jen Group (Academia Sinica)</div>
+        <p class="summary">
+          Presented a literature-based technical review of exact decoding algorithms for quantum error-correcting codes, discussing performance, scalability, and regimes where exact methods are viable.
+        </p>
+        <ul>
+          <li>Motivated by Prof. Chun-Ming Chen’s Coding Theory (NTU).</li>
+          <li>Reference: <a class="btn-link" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603" target="_blank" rel="noopener">PRL 134, 190603</a></li>
+        </ul>
+        <div class="links">
+          <a class="btn-link" href="https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing" target="_blank" rel="noopener">Slides & Notes</a>
+        </div>
+      </section><section class="entry">
         <h2>Quantum Algorithm for Solving PDEs and Its Applications</h2>
         <div class="meta">Quantum Information & Computation · 2025 Spring · <strong>Lecturer:</strong> Prof. Hao-Chung Cheng (NTU EE)</div>
         <p class="summary">
@@ -78,9 +99,11 @@
         <div class="links">
           <a class="btn-link" href="https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
         </div>
-      </section>
-
-      <!-- PTML: Regression & Bayesian -->
+      </section><section class="project"><h2>Theoretical Foundations of Neural Scaling Laws</h2><p class="meta">Physical Theories of (Machine) Learning · 2025</p><p>Presented a literature review based on Bahri et al. on theoretical explanations of neural scaling laws across dataset- and model-size regimes. Compared variance-limited scaling from statistical fluctuations with resolution-limited scaling governed by the intrinsic dimension and geometric structure of the data.<br>
+        <div class="links">
+          <a class="btn-link" href="https://drive.google.com/file/d/1gNv6rYCK8u4uFnFvutjEsACsnJGw8vC-/view?usp=sharing" target="_blank" rel="noopener">Presentation slides</a>
+          <a class="btn-link" href="https://arxiv.org/abs/2102.06701" target="_blank" rel="noopener">Reference</a></p></section>
+        </div>
       <section class="entry">
         <h2>Regression and Bayesian Inference: Mean Squared Error</h2>
         <div class="meta">Physical Theories on (Machine) Learning · 2025 Fall · <strong>Lecturer:</strong> Prof. Miranda C. N. Cheng (NTU Physics)</div>
@@ -90,26 +113,7 @@
         <div class="links">
           <a class="btn-link" href="https://drive.google.com/drive/folders/14GRNlpayGsCsZLmGu1XvyVk4By_sDdTu?usp=sharing" target="_blank" rel="noopener">Project Folder</a>
         </div>
-      </section>
-
-      <!-- QEC Decoding -->
-      <section class="entry">
-        <h2>Exact Decoding of Quantum Error-Correcting Codes</h2>
-        <div class="meta">IAMS Group Meeting / Coding Theory · 2025 Fall · Presented at Jen Group (Academia Sinica)</div>
-        <p class="summary">
-          Explored exact decoding algorithms for QEC with an eye to performance/scalability and regimes where exact methods are viable.
-        </p>
-        <ul>
-          <li>Motivated by Prof. Chun-Ming Chen’s Coding Theory (NTU).</li>
-          <li>Reference: <a class="btn-link" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603" target="_blank" rel="noopener">PRL 134, 190603</a>.</li>
-        </ul>
-        <div class="links">
-          <a class="btn-link" href="https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing" target="_blank" rel="noopener">Slides & Notes</a>
-        </div>
-      </section>
-
-      <!-- Optical computing -->
-      <section class="entry">
+      </section><section class="entry">
         <h2>The Features of Optical Computing</h2>
         <div class="meta">Introduction to Semiconductor Optoelectronics · 2024 Spring · <strong>Lecturer:</strong> Prof. Yun-Chorng Chang (RCAS, Academia Sinica)</div>
         <p class="summary">
@@ -119,26 +123,7 @@
         <div class="links">
           <a class="btn-link" href="https://drive.google.com/drive/folders/1WC8oHstm86_m0vdKC4bWl-zRT6JmJFeB?usp=sharing" target="_blank" rel="noopener">Video (Mandarin)</a>
         </div>
-      </section>
-
-      <!-- Qiskit Pulse (in progress) -->
-      <section class="entry">
-        <h2>Comparing Gate-Based vs. Unitary-Based Pulse Generation with Qiskit Pulse <em>(in progress)</em></h2>
-        <div class="meta">Introduction to Quantum Computation & Information · 2025 Fall · <strong>Lecturer:</strong> Prof. Hsi-Sheng Guan (NTU Physics)</div>
-        <p class="summary">
-          Contrasts predefined gate pulses vs. custom unitary-based pulses on IBM Quantum hardware—fidelity, flexibility, and implementation complexity.
-        </p>
-        <div class="links">
-          <a class="btn-link" href="https://arxiv.org/abs/2405.03804" target="_blank" rel="noopener">EPOC (arXiv:2405.03804)</a>
-        </div>
-        <details>
-          <summary>More notes</summary>
-          <p class="summary">
-            Gate-based pulses are convenient and hardware-optimized; unitary-based pulses enable tailored control at the cost of synthesis effort.
-          </p>
-        </details>
-      </section>
-    </div>
+      </section></div>
   </main>
   </body>
 </html>

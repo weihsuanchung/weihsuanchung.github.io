@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;700&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap");
 
 :root {
-  --bg: #4b647f7d;
+  --bg: #596a7c7d;
   --surface: #f1f1f2;
   --surface-soft: #cfd5d8;
   --text: #21303a;
@@ -325,9 +325,12 @@ code {
   color: var(--muted) !important;
 }
 
-.meta {
+p.meta,
+div.meta {
   margin-bottom: 0.55rem;
+  color: var(--primary) !important;
   font-size: 0.94rem;
+  font-weight: 600;
 }
 
 .summary {
@@ -409,6 +412,41 @@ details > summary {
   padding: 0.55rem 0.65rem 0.7rem !important;
   color: var(--muted) !important;
   font-size: 0.9rem;
+  text-align: center;
+}
+
+.gallery-single {
+  grid-template-columns: minmax(0, 520px) !important;
+  justify-content: center;
+}
+
+.project-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 30%);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.portrait-figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.portrait-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.portrait-figure figcaption {
+  padding: 0.55rem 0.65rem 0.7rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
   text-align: center;
 }
 
@@ -500,4 +538,23 @@ footer {
   .gallery img {
     height: 178px !important;
   }
+
+  .project-split {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-figure {
+    width: min(100%, 320px);
+    justify-self: center;
+  }
+}
+
+/* Profile readability and navigation on small screens. */
+.info p { color: var(--text) !important; }
+.info { flex-basis: 0; }
+.news li { margin: 0.65rem 0; }
+a:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+@media (max-width: 768px) {
+  header nav { flex-wrap: wrap !important; justify-content: center !important; white-space: normal; }
+  .info { flex: auto; }
 }
