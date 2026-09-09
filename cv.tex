@@ -1,0 +1,719 @@
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+% \usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+% \usepackage[encapsulated]{CJK}
+% \usepackage[utf8]{inputenc}
+\usepackage{fontspec} % XeLaTeX 處理字體的標配
+\usepackage{xeCJK}
+\usepackage{unicode-math} % 處理數學字體的高階包
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+% Set the CJK main font for Chinese characters
+\setCJKmainfont{NSimSun}
+\setmainfont[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic
+]{texgyrepagella}
+% \setmainfont{TeX Gyre Pagella} 
+
+% ==================================================
+\begin{document}
+% \headerfontiii
+
+% Header
+\begin{center}
+  {\Huge\textbf{Wei-Hsuan Chung} 鍾瑋軒}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \href{mailto:b12202069@ntu.edu.tw}{b12202069@ntu.edu.tw} | 
+    % \href{https://www.yourwebsite.com/}{yourwebsite.com} | 
+    \socialicon{\faGithub} \href{https://github.com/weihsuanchung}{weihsuanchung} |
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/wei-hsuan-chung-a98782386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app}{Wei-Hsuan Chung}
+    }
+\end{center}
+\vspace{-8mm}
+\begin{center}
+    \small{Taipei, Taiwan} | \socialicon{\faIcon{globe}} \href{https://weihsuanchung.github.io/}{weihsuanchung.github.io}
+\end{center}
+
+\vspace{-5mm}
+
+\section{\textbf{Research Profile}}
+
+Senior undergraduate in physics at National Taiwan University whose research spans waveguide quantum electrodynamics, open quantum systems, and quantum
+error correction. Experienced in theoretical modeling and numerical simulation using Python and Julia. Co-author of a peer-reviewed article published in \textit{Physical Review A}, with research interests at the intersection of theoretical quantum information and quantum optics.
+
+% \section{\textbf{Research Interests}}
+
+% Theoretical quantum information and quantum optics, with particular interests
+% in open quantum systems, quantum error correction, and light--matter interactions;
+% additional interest in physics education research.
+
+
+% \section{\textbf{Objective}}
+% \vspace{1mm}
+% \small{
+% % General Objective
+% % Third-year NTU Physics undergraduate (double major in Sociology) with co-authorship on a submitted Physical Review A paper in theoretical quantum optics. Seeking a challenging research opportunity to contribute proven skills in both theoretical modeling (waveguide QED) and computational physics (LAMMPS, Python/Julia). Eager to gain advanced experience in quantum information, open quantum systems, and non-equilibrium dynamics in preparation for Ph.D. studies.
+
+% Junior Physics major at National Taiwan University with strong computational skills (Python/Julia) and research experience in Waveguide QED. Co-author of a submitted \textit{Physical Review A} manuscript. Seeking a summer research opportunity to investigate open quantum systems and quantum information theory, aiming to develop advanced theoretical tools for future Ph.D. research.
+% }
+\vspace{2mm}
+
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{National Taiwan University (NTU)}{Taipei, Taiwan}
+{\textbf{B.S. candidate in Physics}; double major in Sociology}{Sep. 2023 - Jun. 2027 (Expected)}
+\resumeItemListStart
+\item CGPA: 3.99/4.30
+\item Completing the \textbf{NTU Quantum Computing and Information Program}
+\resumeItemListEnd
+
+% \resumeSubheading
+% {College Name}{City, Country}
+% {Pre-University Education}{Month Year}
+% \resumeItemListStart
+% \item Grade: XX.X\%
+% \resumeItemListEnd
+
+% \resumeSubheading
+% {Taichung Municipal Taichung Girls' Senior High School}{Taichung, Taiwan}
+% {Mathematics and Science Honors Program}{Sep. 2020 - Jun. 2023}
+% \resumeItemListStart
+% \item Grade: Top 5-10\% in General, Top 1\% in Physics
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-3mm}
+
+% \section{\textbf{Research Experience}}
+% \vspace{-0.4mm}
+%   \resumeSubHeadingListStart
+%   \resumeSubheading
+%       {{Institute of Atomic and Molecular Sciences, Academia Sinica [\href{https://www.iams.sinica.edu.tw/tw/}{\faIcon{globe}}]}}{Taipei, Taiwan}
+%       {\textbf{Research Assistant} in Dr. Hsiang-Hua Jen's Atomic Physics and Optical Science Theoretical Group}{Jul. 2025 - Present}
+%       \resumeItemListStart
+%         \item Investigating waveguide QED and quantum networks, focusing on Dicke-state generation and spectral analysis.
+%         \item Currently investigating non-equilibrium phenomena, including Quantum Batteries and the Quantum Mpemba Effect in waveguide/cavity QED.
+%         \item Weekly meetings and collaboration on theoretical modeling using \texttt{Julia} and \texttt{Python}.
+%       \resumeItemListEnd 
+%   \resumeSubheading
+%       {{Institute of Physics, Academia Sinica [\href{https://www.phys.sinica.edu.tw/}{\faIcon{globe}}]}}{Taipei, Taiwan}
+%       {\textbf{Research Assistant} in Dr. To, Kiwing's Complex Systems of Granular Materials Group}{Aug. 2024 - Jul. 2025}
+%       \resumeItemListStart
+%         \item Conducted experiments on reciprocal force; currently extending results via \texttt{LAMMPS} simulations and manuscript preparation.
+%         \item Developed and used custom \texttt{Linux} shell scripts to process and analyze experimental data.   \item Independent continuation after advisor’s retirement, aiming for publication.
+%       \resumeItemListEnd 
+%   \resumeSubheading
+%     {Department of Physics, National Taiwan University [\href{https://www.phys.ntu.edu.tw/Default.html}{\faIcon{globe}}]}{Taipei, Taiwan}
+%     {\textbf{Research Assistant} in Prof. Pei-Yun Yang's Physics Education Research Project}{Mar. 2025 - Jul. 2025}
+%     \resumeItemListStart
+%       \item Studied Just-in-Time Teaching (JiTT) literature in physics higher education.
+%       \item Analyzed student feedback and performance data to assess JiTT effectiveness.
+%       \item Data analysis using \texttt{Python} and project report writing.
+%     \resumeItemListEnd
+%   \resumeSubheading
+%     {Department of Physics, National Taiwan University [\href{https://www.phys.ntu.edu.tw/Default.html}{\faIcon{globe}}]}{Taipei, Taiwan}
+%     {\textbf{Research Assistant} in Prof. Pei-Yun Yang's Physics Education Research Project}{Feb. 2026 - Jun. 2026}
+%     \resumeItemListStart
+%       \item Developing a AI teaching assistant (Luminer) for General Physics courses, focusing on natural language processing and educational technology.
+%       \item Using \texttt{Python}, \texttt{Streamlit} and \texttt{Gemini API} for chatbot development, and analyzing student interactions to improve the system.
+%     \resumeItemListEnd
+%   \resumeSubHeadingListEnd
+% \vspace{-3mm}
+
+\section{\textbf{Research Experience}}
+
+\vspace{-0.4mm}
+
+\resumeSubHeadingListStart
+
+% ---------- MPL ----------
+\resumeSubheading
+{Max Planck Institute for the Science of Light (MPL)
+[\href{https://mpl.mpg.de/}{\faIcon{globe}}]}
+{Erlangen, Germany}
+{\textbf{Research Intern}, Lise Meitner Research Group led by Dr. Flore Kunst}
+{Sep.--Oct., 2026}
+
+\resumeItemListStart
+    \item Selected for an eight-week research internship in the 
+    Non-Hermitian Topological Phenomena group.
+    
+    \item Will conduct theoretical research on non-Hermitian and topological
+    phenomena in open quantum systems using analytical and numerical methods.
+\resumeItemListEnd
+
+
+% ---------- MPQ / MCQST ----------
+\resumeSubheading
+{Max Planck Institute of Quantum Optics (MPQ)
+[\href{https://www.mpq.mpg.de/}{\faIcon{globe}}]}
+{Garching, Germany}
+{\textbf{Summer Research Intern}, Theoretical Group, supervised by Dr. Rahul Trivedi}
+{Aug. 2026}
+
+\resumeItemListStart
+    \item Selected as one of 13 participants from a pool of 386 applicants for the 2026 MCQST Summer Bachelor Program.
+    \item Conducting a
+    research project entitled \textit{Robustness of Error-Correction Codes to Realistic Noise}.
+
+    \item Investigating the performance of quantum error-correcting codes under realistic noise models with simulations.
+
+    \item Using \texttt{Python} and \texttt{Stim} to simulate quantum errors, syndrome measurements, and error-correction procedures.
+\resumeItemListEnd
+
+
+% ---------- IAMS ----------
+\resumeSubheading
+{Institute of Atomic and Molecular Sciences (IAMS), Academia Sinica
+[\href{https://www.iams.sinica.edu.tw/en/}{\faIcon{globe}}]}
+{Taipei, Taiwan}
+{\textbf{Research Assistant}, Atomic Physics and Optical Science Theory Group,
+Dr. Hsiang-Hua Jen}
+{Jul. 2025-- Present}
+
+\resumeItemListStart
+    \item Joined the group through the 2025 IAMS Undergraduate Summer Internship and continued as a research assistant.
+
+    \item Performed numerical simulations of excitation dynamics and spectral
+    properties in structured waveguide QED using \texttt{Python} and \texttt{Julia};
+    contributed to simulation, analysis, and manuscript writing for a
+    \textit{Physical Review A} publication.
+    
+    \item Investigating Dicke-state generation through quantum-coherence control
+    in directional waveguide QED; manuscript in preparation.
+    
+    \item Studying non-equilibrium quantum phenomena, including the Quantum Mpemba
+    Effect and quantum batteries, in waveguide and cavity QED systems.
+\resumeItemListEnd
+
+
+% ---------- IOP ----------
+\resumeSubheading
+{Institute of Physics (IOP), Academia Sinica
+[\href{https://www.phys.sinica.edu.tw/index_en.php}{\faIcon{globe}}]}
+{Taipei, Taiwan}
+{\textbf{Research Assistant}, Complex Systems of Granular Materials Group,
+Dr. Kiwing To}
+{Aug. 2024--Jul. 2025}
+
+\resumeItemListStart
+    \item Conducted experiments on reciprocal-force behavior in granular systems
+    and developed Linux shell scripts for experimental data processing and analysis.
+    
+    \item Continued the project independently by developing LAMMPS simulations.
+\resumeItemListEnd
+
+\vspace{10mm}
+% ---------- NTU ----------
+\resumeSubheading
+{Department of Physics, National Taiwan University
+[\href{https://www.phys.ntu.edu.tw/Default.html}{\faIcon{globe}}]}
+{Taipei, Taiwan}
+{\textbf{Research Assistant}, Physics Education Research Projects,
+Prof. Pei-Yun Yang}
+{Mar.--Jul. 2025; Feb.--Jun. 2026}
+
+\resumeItemListStart
+    \item Developed \textit{Luminer}, an AI teaching assistant for introductory
+    physics courses, using \texttt{Python}, \texttt{Streamlit}, and the
+    \texttt{Gemini API}.
+    
+    \item Analyzed student--chatbot interactions to evaluate system performance
+    and identify opportunities for improving educational effectiveness.
+    
+    \item Reviewed Just-in-Time Teaching (JiTT) literature and analyzed student
+    feedback and performance data to assess its effectiveness in undergraduate
+    physics education.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-3mm}
+
+
+% \section{\textbf{Projects}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+
+% \resumeProject
+%   {Project A: [Brief Description]}
+%   {Tools: [List of tools and technologies used]}
+%   {Month Year - Month Year}
+%   {{}[\href{https://github.com/your-username/project-a}{\textcolor{darkblue}{\faGithub}}]}
+% \resumeItemListStart
+%   \item Developed [specific feature/system] for [specific purpose]
+%   \item Implemented [specific technology] for [specific goal], achieving [specific result]
+%   \item Created [specific component], ensuring [specific benefit]
+%   \item Applied [specific method] to analyze [specific aspect]
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Project B: [Brief Description]}
+%   {Tools: [List of tools and technologies used]}
+%   {Month Year}
+%   {{}[\href{https://github.com/your-username/project-b}{\textcolor{darkblue}{\faGithub}}]}
+% \resumeItemListStart
+%   \item Developed [specific model/system], achieving [specific metric]
+%   \item Implemented [specific feature], processing [specific volume] of data
+%   \item Created [specific visualization] for [specific purpose]
+%   \item Developed [specific component] for easy integration with [specific system]
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+
+\section[Publications \& Preprints -- C=Conference, J=Journal, S=In Submission, T=Thesis]{\textbf{Patents and Publications} \hfill \textcolor{darkblue}{\scriptsize C=Conference, J=Journal, P=Preprint, S=In Submission, T=Thesis}}
+\vspace{0.2mm}
+\small{
+\begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, widest={[\textbf{S.1}]}, itemindent=0em, label={\textbf{[\arabic*]}}]
+
+\item[\textbf{[J.1]}] I. G. N. Y. Handayana, Y.-T. Yu, \underline{\textbf{W. H. Chung}} and H. H. Jen, \textbf{Manipulating Excitation Dynamics in Structured Waveguide Quantum Electrodynamics}, \textit{Physical Review A \textbf{113}, 043709 (2026).}; \href{https://doi.org/10.1103/nx83-npj8}{doi:10.1103/nx83-npj8}. 
+
+\item[\textbf{[P.1]}] \underline{\textbf{W. H. Chung}}*, Y.-T. Yu*, T.-S. Guo and H. H. Jen, \textbf{Fast Quantum State Preparation in Chiral Waveguide QED}, manuscript in preparation. (* Co-first author)
+
+\item[\textbf{[P.2]}] M.-Y. Liao*, \underline{\textbf{W. H. Chung}}* and Pei-Yun Yang, \textbf{Teaching General Physics with Just-In-Time Teaching}, manuscript in preparation. (* Co-first author)
+\end{enumerate}
+}
+
+\vspace{-2mm}
+
+\section*{\textbf{Academic Activities}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+% ---------- 青年百億計畫 -----------
+\resumeProject
+{2026 IBM Quantum Dream: New York Training Camp}
+{Taiwan Global Pathfinders Initiative, Ministry of Education}
+{New York, USA}
+{Jul. 13--28, 2026}
+
+\resumeItemListStart
+\item Selected for a fully funded overseas training program in quantum
+computing under the Taiwan Global Pathfinders Initiative.
+
+\item Participated in lectures, hands-on workshops, and institutional visits
+covering quantum hardware, quantum algorithms, error correction, and
+applications in finance and emerging technologies.
+
+\item Engaged with researchers and industry professionals from IBM Quantum,
+PsiQuantum, JPMorgan Chase, and Wells Fargo on the development and
+commercial applications of quantum technologies.
+\resumeItemListEnd
+
+% ---------- TPS 2026 -----------
+\resumeProject
+{2026 Annual Meeting of the Physical Society of Taiwan}
+{National Chung Cheng University}
+{Chiayi, Taiwan}
+{Jan. 13--15, 2026}
+\resumeItemListStart
+    \item Presented a poster entitled \textit{Manipulating Excitation Dynamics
+    in Structured Waveguide Quantum Electrodynamics}.
+\resumeItemListEnd
+
+% --------- QEC Workshop 2025 -----------
+\resumeProject
+{2025 Workshop on Advances in Quantum Error Correction}
+{National Yang Ming Chiao Tung University}
+{Hsinchu, Taiwan}
+{Dec. 29, 2025}
+\resumeItemListStart
+    \item Attended lectures on QLDPC codes, surface codes, and recent advances
+    in fault-tolerant quantum computing.
+\resumeItemListEnd
+
+% --------- NASA Space Apps Challenge 2025 -----------
+\resumeProject
+  {2025 NASA Space Apps Challenge}
+  {NASA}
+  {Taiwan}
+  {Oct. 2025}
+\resumeItemListStart
+  \item Collaborated with a multidisciplinary team to develop a data-driven web application addressing global challenges.
+  \item Developed \href{https://www.spaceappschallenge.org/2025/find-a-team/tsaijiunteam/?tab=project}
+  {WeAdvisor: Discover Global Historical Weather Data} using \texttt{React.js} and \texttt{Flask}.
+\resumeItemListEnd
+
+% --------- NCTS AMO Summer School 2025 -----------
+\resumeProject
+{2025 NCTS AMO Physics Summer School}
+{National Center for Theoretical Sciences, Physics Division}
+{Hsinchu, Taiwan}
+{Aug. 2025}
+\resumeItemListStart
+    \item Completed an intensive three-day program covering contemporary topics
+    in atomic, molecular, and optical physics.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% \section*{\textbf{Academic Activities}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+%   \resumeProject
+%   {2025 NCTS AMO Summer School}
+%   {National Center for Theoretical Sciences, Physics Division, Taiwan}{Hsinchu, Taiwan}
+%   {Aug. 2025}
+%   % {{}[\href{https://phys.ncts.ntu.edu.tw/act/actnews/The-2025-Atomic-Molecular-and-Optical-AMO-Physics-Summer-School-40329239/home}{\textcolor{darkblue}{\faIcon{globe}}}]}
+%   \resumeItemListStart
+%     \item Three-day intensive program on atomic, molecular, and optical physics.
+%   \resumeItemListEnd
+
+%   % \resumeProject{2025 IAMS Undergraduate Summer Internship}{Institute of Atomic and Molecular Sciences, Academia Sinica}{Taipei, Taiwan}{Jul. 2025 - Aug. 2025}
+%   %   \resumeItemListStart
+%   %     \item Conducted research on waveguide quantum electrodynamics under Dr. Hsiang-Hua Jen.
+%   %     \item Gained hands-on experience in theoretical modeling and numerical simulations using \texttt{Julia} and \texttt{Python}.
+%   %     \item Participated in weekly group meetings and presented research findings in oral.
+%   %   \resumeItemListEnd
+
+%     \resumeProject{2025 Workshop on Advances in Quantum Error Correction}{Institute of Communications Engineering, National Yang Ming Chiao Tung University}{Hsinchu, Taiwan}{29 Dec. 2025}
+%     \resumeItemListStart
+%       \item Attended lectures on recent developments in quantum error correction codes and fault-tolerant quantum computing.
+%       \item Learning from experts in the field about Quantum Low-Density Parity-Check (QLDPC) Codes, Surface code and how the researchers are addressing challenges in implementing practical quantum error correction.
+%     \resumeItemListEnd
+
+%     \resumeProject{2026 Annual Meeting of the Physical Society of Taiwan}{National Chung-Cheng University}{Chiayi, Taiwan}{13 Jan. - 15 Jan. 2026}
+%     \resumeItemListStart
+%       \item Poster presentation on \textbf{Manipulating Excitation Dynamics in Structured Waveguide Quantum Electrodynamics}.
+%     \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+\vspace{-2mm}
+
+\section{\textbf{Selected Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+{Noise-Aware Evaluation of EPOC Compilation}
+{Introduction to Quantum Computation and Information}
+{2025}{}
+
+\resumeItemListStart
+    \item \href{https://drive.google.com/file/d/16gXFBYDk-Z_bkJiOrvICdMh581pANyCf/view?usp=sharing}{Project Report}
+    \item Main Reference: \href{https://arxiv.org/abs/2405.03804}{EPOC: An Efficient Pulse Generation Framework with Advanced Synthesis for Quantum Circuits}
+    \item Reproduced the EPOC compilation pipeline by combining
+    ZX-calculus optimization with BQSKit synthesis and evaluated its
+    performance under thermal-relaxation and depolarizing noise using
+    Qiskit Aer.
+    \item Observed depth reductions exceeding 90\% on selected benchmarks
+    and identified degradation on larger circuits when pulse durations
+    approached hardware coherence times.
+\resumeItemListEnd
+
+\resumeProject
+{Quantum Algorithms for Partial Differential Equations}
+{Quantum Information and Computation}
+{2025}{}
+
+\resumeItemListStart
+    \item Project: \href{https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing}{QIC Final Project (Presentation Video, Project Report, and Slides)}
+    \item Surveyed Hamiltonian-simulation, block-encoding, and
+    finite-difference approaches to solving PDEs on quantum computers,
+    comparing their resource scaling and implementation requirements.
+    \item Analyzed practical limitations arising from state preparation,
+    boundary conditions, observable extraction, and Trotter error.
+\resumeItemListEnd
+
+\resumeProject
+{Theoretical Foundations of Neural Scaling Laws}
+{Physical Theories of (Machine) Learning}
+{2025}{}
+
+\resumeItemListStart
+    \item Main Reference: \href{https://arxiv.org/abs/2102.06701}{Bahri, Y., Dyer, E., Kaplan, J., Lee, J., \& Sharma, U. (2021). Explaining neural scaling laws. arXiv.}
+    \item Project: \href{https://drive.google.com/file/d/1gNv6rYCK8u4uFnFvutjEsACsnJGw8vC-/view?usp=sharing}{My Presentation Slides}
+    \item Presented a literature review based on Bahri et al. on theoretical
+    explanations of neural scaling laws across dataset- and model-size regimes.
+    \item Compared variance-limited scaling, arising from statistical
+    fluctuations, with resolution-limited scaling governed by the intrinsic
+    dimension and geometric structure of the data.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-4mm}
+
+\section{\textbf{Skills}}
+\vspace{-0.4mm}
+\resumeHeadingSkillStart
+\resumeSubItem{Programming:}
+{Python, Julia, Linux shell scripting}
+\resumeSubItem{Scientific Computing:}
+{QuTiP, QuantumOptics.jl, NumPy, SciPy, Stim, Qiskit, LAMMPS}
+\resumeSubItem{Research Tools:}
+{Git, Jupyter Notebook, LaTeX, LabVIEW}
+\resumeSubItem{Research Methods:}
+{Numerical simulation, quantum-system modeling, stabilizer-circuit simulation,
+experimental data acquisition and analysis}
+\resumeSubItem{Languages:}
+{Mandarin (Native), English (CEFR C1), German (Beginner)}
+\resumeHeadingSkillEnd
+
+\vspace{0mm}
+
+\section{\textbf{Honors and Awards}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+{Honorable Mention, Undergraduate Research Poster Competition}
+{Department of Physics, National Taiwan University}
+{May 2026}
+{{}[\href{https://www.phys.ntu.edu.tw/News_Content_n_39670_s_263141.html}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+    \item Awarded for the poster \textit{Manipulating Excitation Dynamics
+    in Structured Waveguide Quantum Electrodynamics}.
+\resumeItemListEnd
+
+\resumeProject
+  {Merit Award, Promenade of Data Science 2024}
+  {Institute of Statistical Science, Academia Sinica}
+  {Dec. 2024}
+  {{}[\href{https://www3.stat.sinica.edu.tw/pds2025/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Recognized for excellence in data science skills, innovative problem-solving and great teamwork
+  \item Using \texttt{Python} and machine learning for data analysis and visualization
+  \item Awarded among 100+ participants from various universities, including undergraduate and graduate students
+\resumeItemListEnd
+
+\resumeProject
+  {Entegris Foundation STEM Scholarship Fund}
+  {Entegris Foundation, Inc}
+  {2024}
+  {{}[\href{https://www.entegris.com/}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Selected for academic excellence and commitment to STEM from among
+  sophomore applicants at National Taiwan University
+\resumeItemListEnd
+
+\resumeProject
+  {Mr. Cheng-Chih Yen Memorial Scholarship}
+  {Department of Physics, National Taiwan University}
+  {2025}
+  {{}[\href{https://www.phys.ntu.edu.tw/001/Upload/739/relfile/44725/259050/7bf911e8-ed8b-4968-b652-02a15fcd20ab.pdf}{\textcolor{darkblue}{\faIcon{globe}}}]}
+\resumeItemListStart
+  \item Awarded by the Department of Physics during the Fall 2025 semester
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-4mm}
+
+% \section{\textbf{Related Coursework}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+%   \resumeProject{Quantum Algorithm for Solving PDEs and
+% Its Applications}{Quantum Information and Computation}{2025 Spring}{}
+%     \resumeItemListStart
+%       \item Lectured by Prof. Hao-Chung Cheng (Dept. of Electrical Engineering, NTU)
+%       \item Project: \href{https://drive.google.com/drive/folders/1bSadj-EyRk92C6t3FrmyFvCJm9VBX7J4?usp=sharing}{QIC Final Project (Presentation Video, Project Report, and Slides)}
+%     \resumeItemListEnd
+%     \vspace{1mm}
+%     In this project, we survey three quantum approaches to PDEs—(i) wave-equation Hamiltonian simulation with logarithmic qubit scaling, (ii) advection via block-encoded nonunitary steps with postselection reuse, and (iii) high-order finite-difference mappings to banded Hamiltonians—showing exponential space savings and polynomial (or better) time improvements over classical solvers, while highlighting boundary handling, state preparation, and Trotter error as the main bottlenecks and suggesting qubitization and improved observable extraction as promising next steps.
+
+%   \resumeProject{Regression and Bayesian Inference: Mean Squared Error}{Physical Theories on (Machine) Learning}{2025 Fall}{}
+%     \resumeItemListStart
+%       \item Lectured by Prof. Cheng, Miranda C. N. (Dept. of Physics, NTU)
+%       \item Project: \href{https://drive.google.com/drive/folders/14GRNlpayGsCsZLmGu1XvyVk4By_sDdTu?usp=sharing}{Mean Squared Error (Presentation Video and Slides)}
+%     \resumeItemListEnd
+%     \vspace{1mm}
+%     I outline how Gaussian-noise linear regression links mean squared error (MSE) minimization to likelihood maximization. With a Gaussian prior on parameters, the MAP estimator yields ridge regression, penalizing $\ell_2$ norm with strength $\lambda=\sigma^2/\tau^2$.
+
+%   \resumeProject{Introduction to Neural Scaling Laws}{Physical Theories on (Machine) Learning}{2025 Fall}{}
+%     \resumeItemListStart
+%       \item Lectured by Prof. Cheng, Miranda C. N. (Dept. of Physics, NTU)
+%       \item Main Reference: \href{https://arxiv.org/abs/2102.06701}{Bahri, Y., Dyer, E., Kaplan, J., Lee, J., \& Sharma, U. (2021). Explaining neural scaling laws. arXiv.}
+%       \item Project: \href{https://drive.google.com/file/d/1gNv6rYCK8u4uFnFvutjEsACsnJGw8vC-/view?usp=sharing}{My Presentation Slides}
+%     \resumeItemListEnd
+%     \vspace{1mm}
+%     In my presentation, we explores the theoretical mechanisms behind the empirical scaling laws observed in deep neural networks. Starting with the observation that language model performance improves predictably with scale, we introduce a taxonomy of four distinct scaling regimes based on two factors: the resource constraint (under-parameterized vs. over-parameterized) and the scaling variable (dataset size $D$ vs. model size $P$). We identify two fundamental mechanisms driving these laws: Variance-Limited Scaling, where performance improves with a universal exponent of $-1$ due to the statistical concentration of measure (akin to the Central Limit Theorem), and Resolution-Limited Scaling, where improvements are driven by the geometric resolution of the data manifold, yielding data-dependent exponents determined by the intrinsic dimension. By unifying these regimes, we provide a coherent theoretical framework that explains why large models work and predicts how they will scale.
+
+%   \resumeProject{Exact Decoding of Quantum Error-Correcting Codes}{Group Meeting in Institute of Atomic and Molecular Sciences / Coding Theory}{2025 Fall}{}
+%     \resumeItemListStart
+%       \item Presented at Dr. H. H. Jen's Weekly Group Meeting (IAMS, Academia Sinica)
+%       \item Motivated by Prof. Chun-Ming Chen's Coding Theory Course (NTU)
+%       \item Presentation based on \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.190603}{Phys. Rev. Lett. 134, 190603}.
+%       \item Explored exact decoding algorithms for quantum error-correcting codes, focusing on performance and scalability
+%       \item Project: \href{https://drive.google.com/drive/folders/15IuVpauJykaM5bc9F9uTIxuBV_4epQYw?usp=sharing}{Exact Decoding of QEC Codes (Presentation Slides)}
+%     \resumeItemListEnd
+
+%   \resumeProject{The Features of Optical Computing}{Introduction to Semiconductor Optoelectronics}{2024 Spring}{}
+%     \resumeItemListStart
+%       \item Lectured by Prof. Yun-Chorng Chang (Research Center for Applied Sciences, Academia Sinica)
+%       \item \href{https://drive.google.com/drive/folders/1WC8oHstm86_m0vdKC4bWl-zRT6JmJFeB?usp=sharing}{Project Video Presentation in Mandarin}
+%     \resumeItemListEnd
+%     \vspace{1mm}
+%     % In this project, I introduced optical (photonic) computing, using photons in the visible/IR range to perform digital computation, and highlights why photonics is attractive: massive spatial parallelism, low-loss links for longer distances, low cross-talk at waveguide crossings, inherently one-way propagation, and extremely high carrier bandwidth (on the order of \(\sim500\,\mathrm{THz}\)); I also clarified that “speed of light” is not the true advantage since electrical signals propagate at comparable fractions of \(c\). Remaining hurdles include co-designing viable optical processor architectures, advancing photonic materials, and reducing the bulkiness of current prototypes.
+
+%     I introduced optical (photonic) computing, using photons in the visible/IR range to perform digital computation, and highlights why photonics is attractive: massive spatial parallelism, low-loss links for longer distances, low cross-talk at waveguide crossings, inherently one-way propagation, and extremely high carrier bandwidth (on the order of \(\sim500\,\mathrm{THz}\)). Remaining hurdles include co-designing viable optical processor architectures, advancing photonic materials, and reducing the bulkiness of current prototypes.
+
+%   \resumeProject{Noise-Aware Evaluation of EPOC Compilation}{Introduction to Quantum Computation and Information}{2025 Fall}{}
+%     \resumeItemListStart
+%       \item Lectured by Prof. Hsi-Sheng Guan (Dept. of Physics, NTU)
+%       \item Main Reference: \href{https://arxiv.org/abs/2405.03804}{EPOC: An Efficient Pulse Generation Framework with Advanced Synthesis for Quantum Circuits}
+%       \item \href{https://drive.google.com/file/d/16gXFBYDk-Z_bkJiOrvICdMh581pANyCf/view?usp=sharing}{Project Report}
+%     \resumeItemListEnd
+%     \vspace{1mm}
+%     Quantum algorithm fidelity in the NISQ era is limited by decoherence and the gate-based “latency gap.” We reproduce and evaluate EPOC, combining ZX-calculus optimization with BQSKit synthesis, under Qiskit Aer noise (thermal relaxation and depolarizing). EPOC cuts depth by >90\% (e.g., QAOA, BB84) and achieves >0.99 Sorted Hellinger fidelity on BB84, but can fail on larger benchmarks ($\text{RD}\_32$, SIMON) when pulse durations exceed coherence times, motivating hardware-aware constraints for pulse-level compilation.
+% \vspace{-3mm}
+% \resumeSubHeadingListEnd
+
+
+\vspace{-3mm}
+
+\end{document}
