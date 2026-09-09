@@ -557,4 +557,5 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 @media (max-width: 768px) {
   header nav { flex-wrap: wrap !important; justify-content: center !important; white-space: normal; }
   .info { flex: auto; }
+  .education-list { text-align: left; }
 }
